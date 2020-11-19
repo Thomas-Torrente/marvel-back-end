@@ -38,7 +38,7 @@ app.get("/characters", async (req, res) => {
 app.get("/comics", async (req, res) => {
   try {
     const ts = uid2(10);
-    const hash = md5(ts + privateKey + publicKey );
+    const hash = md5(ts + privateKey + publicKey);
 
     const response = await axios.get(
       `https://gateway.marvel.com/v1/public/comics?ts=${ts}&hash=${hash}&apikey=${publicKey}`
@@ -64,15 +64,14 @@ app.get("/comics/caracteres", async (req, res) => {
   }
 });
 
-res.json("/character/:id", async (req, res) => {
+app.get("/character/:id", async (req, res) => {
   try {
- 
     res.json(offerId);
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ message: error.message });
   }
-
+});
 app.listen(process.env.PORT, () => {
   console.log("serveur has been start");
 });
