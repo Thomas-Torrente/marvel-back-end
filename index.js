@@ -41,7 +41,7 @@ app.get("/comics", async (req, res) => {
     const hash = md5(ts + publicKey + privateKey);
 
     const response = await axios.get(
-      `https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&hash=${hash}&apikey=${publicKey}`
+      `https://gateway.marvel.com/v1/public/characters?ts=${ts}&hash=${hash}&apikey=${publicKey}`
     );
     res.json(response.data.data);
   } catch (error) {
@@ -55,7 +55,7 @@ app.get("/comics-caracteres", async (req, res) => {
     const hash = md5(ts + publicKey + privateKey);
 
     const response = await axios.get(
-      `https://gateway.marvel.com:443/v1/public/characters/%7BcharacterId%7D/comics?apikey=${publicKey}
+      `https://gateway.marvel.com/v1/public/characters/characterId/comics?apikey=${publicKey}
 `
     );
     res.json(response.data.data);
