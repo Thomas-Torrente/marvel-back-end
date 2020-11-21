@@ -49,13 +49,13 @@ app.get("/comics", async (req, res) => {
   }
 });
 
-app.get("/comics/caracteres", async (req, res) => {
+app.get("/character", async (req, res) => {
   try {
     const ts = uid2(10);
     const hash = md5(ts + publicKey + privateKey);
 
     const response = await axios.get(
-      `https://gateway.marvel.com/v1/public/characters/characterId/comics?apikey=${publicKey}
+      `https://gateway.marvel.com/v1/public/characters/{characterId}?ts=${ts}&hash=${hash}&apikey=${publicKey}
 `
     );
     res.json(response.data.data);
@@ -66,12 +66,13 @@ app.get("/comics/caracteres", async (req, res) => {
 
 app.get("/character/:id", async (req, res) => {
   try {
-    res.json(offerId);
+    // const characterID = await
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ message: error.message });
   }
 });
+
 app.listen(process.env.PORT, () => {
   console.log("serveur has been start");
 });
