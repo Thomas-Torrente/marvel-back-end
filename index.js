@@ -55,7 +55,7 @@ app.get("/character", async (req, res) => {
     const hash = md5(ts + publicKey + privateKey);
 
     const response = await axios.get(
-      `https://gateway.marvel.com/v1/public/characters/${characterId}?ts=${ts}&hash=${hash}&apikey=${publicKey}
+      `https://gateway.marvel.com/v1/public/characters/${req.params.id}?ts=${ts}&hash=${hash}&apikey=${publicKey}
 `
     );
     res.json(response.data.data);
