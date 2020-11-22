@@ -49,7 +49,7 @@ app.get("/comics", async (req, res) => {
   }
 });
 
-app.get("/character.:id", async (req, res) => {
+app.get("/character/:id", async (req, res) => {
   let id = req.params.id;
   try {
     const ts = uid2(10);
@@ -57,7 +57,7 @@ app.get("/character.:id", async (req, res) => {
 
     const response = await axios.get(
       `
-https://gateway.marvel.com/v1/public/characters/${id}?ts=${ts}&hash=${hash}&apikey=${publicKey}
+https://gateway.marvel.com/v1/public/characters/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}
 `
     );
 
