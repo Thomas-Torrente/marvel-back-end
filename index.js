@@ -58,17 +58,9 @@ app.get("/character", async (req, res) => {
       `https://gateway.marvel.com/v1/public/characters/${req.params.id}?ts=${ts}&hash=${hash}&apikey=${publicKey}
 `
     );
+
     res.json(response.data.data);
   } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
-
-app.get("/character/:id", async (req, res) => {
-  try {
-    // const characterID = await
-  } catch (error) {
-    console.log(error.message);
     res.status(400).json({ message: error.message });
   }
 });
